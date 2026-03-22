@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 
 const links = [
   { to: '/', label: 'Overview' },
-  { to: '/currency/USD', label: 'Currency' },
+  { to: '/currencies', label: 'Currencies' },
 ]
 
 export function AppHeader() {

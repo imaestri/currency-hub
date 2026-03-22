@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button'
 function getErrorCopy(error: unknown, pathname: string) {
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
-      if (pathname.startsWith('/currency/')) {
+      if (pathname.startsWith('/currencies/')) {
         const currencyCode = pathname.split('/').at(-1)?.toUpperCase() ?? 'UNKNOWN'
 
         return {

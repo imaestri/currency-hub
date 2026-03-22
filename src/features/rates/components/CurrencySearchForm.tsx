@@ -15,7 +15,7 @@ export function CurrencySearchForm() {
     const normalizedCode = code.toUpperCase()
 
     setSelectedCurrencyCode(normalizedCode)
-    navigate(`/currency/${normalizedCode}`)
+    navigate(`/currencies/${normalizedCode}`)
   }
 
   return (

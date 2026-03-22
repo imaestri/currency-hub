@@ -42,11 +42,11 @@ export function CurrenciesTable() {
                 key={currency.code}
                 className="cursor-pointer"
                 tabIndex={0}
-                onClick={() => navigate(`/currency/${currency.code}`)}
+                onClick={() => navigate(`/currencies/${currency.code}`)}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault()
-                    navigate(`/currency/${currency.code}`)
+                    navigate(`/currencies/${currency.code}`)
                   }
                 }}
               >

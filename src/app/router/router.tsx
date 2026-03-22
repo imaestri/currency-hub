@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'currency/:code',
+        path: 'currencies/:code',
         element: (
           <Suspense fallback={<RouteLoadingSkeleton />}>
             <CurrencyDetail />
