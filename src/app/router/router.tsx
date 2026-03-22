@@ -44,18 +44,18 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: '*',
-        element: (
-          <Suspense fallback={<RouteLoadingSkeleton />}>
-            <NotFound />
-          </Suspense>
-        ),
-      },
-      {
         path: 'currencies',
         element: (
           <Suspense fallback={<RouteLoadingSkeleton />}>
             <CurrenciesDetail />
+          </Suspense>
+        ),
+      },
+      {
+        path: '*',
+        element: (
+          <Suspense fallback={<RouteLoadingSkeleton />}>
+            <NotFound />
           </Suspense>
         ),
       },

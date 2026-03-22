@@ -10,3 +10,11 @@ export type CurrencySnapshot = {
   symbol: string
   trend: CurrencyTrendPoint[]
 }
+
+export type CurrencyListItem = {
+  code: string
+  name: string
+  region: string
+  symbol: string
+  latestRate: number
+}

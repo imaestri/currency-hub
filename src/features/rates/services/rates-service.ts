@@ -1,4 +1,4 @@
-import type { CurrencySnapshot } from '@/features/rates/types/rates'
+import type { CurrencyListItem, CurrencySnapshot } from '@/features/rates/types/rates'
 
 const snapshots: Record<string, CurrencySnapshot> = {
   USD: {
@@ -45,4 +45,16 @@ const snapshots: Record<string, CurrencySnapshot> = {
 export async function getCurrencySnapshot(code: string) {
   await new Promise((resolve) => setTimeout(resolve, 150))
   return snapshots[code.toUpperCase()] ?? snapshots.USD
+}
+
+export async function getCurrenciesList(): Promise<CurrencyListItem[]> {
+  await new Promise((resolve) => setTimeout(resolve, 150))
+
+  return Object.values(snapshots).map((snapshot) => ({
+    code: snapshot.code,
+    name: snapshot.name,
+    region: snapshot.region,
+    symbol: snapshot.symbol,
+    latestRate: snapshot.trend.at(-1)?.rate ?? 0,
+  }))
 }
