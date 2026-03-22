@@ -2,10 +2,16 @@
 
 CurrencyHub e um dashboard frontend para acompanhar moedas e visualizar um resumo da cotação mais recente em relação ao real brasileiro (BRL). O projeto foi estruturado com foco em organização por feature, facilitando evolução e manutenção.
 
+## Sobre o projeto
+
+Este projeto foi desenvolvido como estudo prático de arquitetura frontend, componentização e decisões voltadas a performance. A ideia é usar uma interface simples de consulta de moedas como base para exercitar conceitos modernos do ecossistema React, como separação por domínio, carregamento sob demanda de rotas, gerenciamento de cache e estado global enxuto.
+
+Além da interface, o projeto também serve como laboratório para explorar ferramentas bastante usadas no mercado, como `Zustand`, `React Hook Form`, `Zod` como validação, `React Query` e estratégias de `code splitting`.
+
 ## Tecnologias usadas
 
 - `React 19` para a interface.
-- `TypeScript` para tipagem estatica.
+- `TypeScript` para tipagem estática.
 - `Vite` para ambiente de desenvolvimento e build.
 - `React Router` para roteamento da aplicação.
 - `TanStack React Query` para gerenciamento de busca e cache de dados.
@@ -15,6 +21,8 @@ CurrencyHub e um dashboard frontend para acompanhar moedas e visualizar um resum
 - `shadcn/ui` e `Radix UI` para a base de componentes.
 - `Recharts` para visualização do gráfico de tendência.
 - `ESLint` para padrão e qualidade de código.
+- `Prettier` para formatação consistente.
+- `Zod` para validação de dados.
 
 ## Estrutura do projeto
 
@@ -43,7 +51,7 @@ src/
 - `Node.js` 20 ou superior recomendado
 - `npm`
 
-### Instalacao
+### Instalação
 
 ```bash
 npm install
@@ -80,9 +88,11 @@ npm run lint
 ## Pontos técnicos do projeto
 
 - Alias `@` apontando para `src/` para simplificar imports.
-- Rotas carregadas com `lazy` e `Suspense`.
+- Rotas carregadas com `lazy` e `Suspense`, ajudando no `code splitting` da aplicação.
 - `React Query` configurado com `staleTime`, `retry` e `refetchOnWindowFocus` desativado.
-- Store global enxuta para manter a moeda selecionada.
+- `Zustand` usado para uma store global enxuta e direta.
+- `React Hook Form` usado para controlar o formulário de busca com validações simples.
+- Estrutura orientada a feature para manter componentes, hooks, serviços e tipos próximos do domínio.
 
 ## Scripts disponíveis
 
