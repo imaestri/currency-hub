@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 32 33% 97%;
+    --foreground: 210 29% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 29% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 29% 14%;
+    --primary: 174 68% 28%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 33 57% 91%;
+    --secondary-foreground: 210 29% 14%;
+    --muted: 40 33% 93%;
+    --muted-foreground: 214 16% 39%;
+    --accent: 47 86% 61%;
+    --accent-foreground: 210 29% 14%;
+    --destructive: 0 78% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 31 26% 85%;
+    --input: 31 26% 85%;
+    --ring: 174 68% 28%;
+    --radius: 1rem;
+    --chart-1: 174 68% 28%;
+    --chart-2: 210 78% 54%;
+    --chart-3: 31 82% 55%;
+    --chart-4: 47 86% 61%;
+    --chart-5: 151 55% 41%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-background font-sans text-foreground antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(245, 188, 76, 0.22), transparent 28%),
+      radial-gradient(circle at top right, rgba(15, 118, 110, 0.16), transparent 24%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 248, 235, 0.92));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading tracking-tight text-foreground;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
