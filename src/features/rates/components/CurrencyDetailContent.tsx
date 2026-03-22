@@ -1,25 +1,23 @@
+import { lazy, Suspense } from 'react'
 import { TrendingUp } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardHeader, CardTitle } from '@/components/ui/card'
-import { CurrencyTrendChart } from '@/features/rates/components/CurrencyTrendChart'
+import { CurrencyTrendChartSkeleton } from '@/features/rates/components/CurrencyTrendChartSkeleton'
 import { useCurrencySnapshot } from '@/features/rates/hooks/useCurrencySnapshot'
 
 type CurrencyDetailContentProps = {
   code: string
 }
 
+const CurrencyTrendChart = lazy(() =>
+  import('@/features/rates/components/CurrencyTrendChart').then((module) => ({
+    default: module.CurrencyTrendChart,
+  })),
+)
+
 export function CurrencyDetailContent({ code }: CurrencyDetailContentProps) {
   const snapshotQuery = useCurrencySnapshot(code)
-
-  if (snapshotQuery.isLoading) {
-    return <div className="rounded-3xl bg-white/75 p-8 shadow-soft">Loading currency snapshot...</div>
-  }
-
   const snapshot = snapshotQuery.data
-
-  if (!snapshot) {
-    return <div className="rounded-3xl bg-white/75 p-8 shadow-soft">Currency not found.</div>
-  }
 
   const latestRate = snapshot.trend.at(-1)?.rate ?? 0
 
@@ -44,7 +42,9 @@ export function CurrencyDetailContent({ code }: CurrencyDetailContentProps) {
         </CardHeader>
       </Card>
 
-      <CurrencyTrendChart snapshot={snapshot} />
+      <Suspense fallback={<CurrencyTrendChartSkeleton />}>
+        <CurrencyTrendChart snapshot={snapshot} />
+      </Suspense>
     </div>
   )
 }
