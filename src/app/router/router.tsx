@@ -12,9 +12,14 @@ const CurrencyDetail = lazy(() =>
   import('@/pages/CurrencyDetail').then((module) => ({ default: module.CurrencyDetail })),
 )
 
+const CurrenciesDetail = lazy(() =>
+  import('@/pages/CurrenciesDetail').then((module) => ({ default: module.CurrenciesDetail })),
+)
+
 const NotFound = lazy(() =>
   import('@/pages/NotFound').then((module) => ({ default: module.NotFound })),
 )
+
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +48,14 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<RouteLoadingSkeleton />}>
             <NotFound />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'currencies',
+        element: (
+          <Suspense fallback={<RouteLoadingSkeleton />}>
+            <CurrenciesDetail />
           </Suspense>
         ),
       },
