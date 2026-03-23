@@ -4,17 +4,14 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useCurrencySearchForm } from '@/features/rates/hooks/useCurrencySearchForm'
 import type { CurrencySearchFormValues } from '@/features/rates/hooks/useCurrencySearchForm'
-import { useRatesStore } from '@/features/rates/store/useRatesStore'
 
 export function CurrencySearchForm() {
   const navigate = useNavigate()
-  const setSelectedCurrencyCode = useRatesStore((state) => state.setSelectedCurrencyCode)
   const form = useCurrencySearchForm()
   
   const onSubmit = ({ code }: CurrencySearchFormValues) => {
     const normalizedCode = code.toUpperCase()
 
-    setSelectedCurrencyCode(normalizedCode)
     navigate(`/currencies/${normalizedCode}`)
   }
 
