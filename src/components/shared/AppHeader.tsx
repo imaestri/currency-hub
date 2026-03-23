@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { ArrowDownRight, ArrowUpRight, Coins, Minus } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -20,6 +21,18 @@ export function AppHeader() {
   const previousRate = spotlightSnapshot?.trend.at(-2)?.rate ?? latestRate
   const rateDirection =
     latestRate > previousRate ? 'up' : latestRate < previousRate ? 'down' : 'flat'
+
+  useEffect(() => {
+    if (!spotlightSnapshot) {
+      document.title = 'CurrencyHub'
+      return
+    }
+
+    const directionSymbol =
+      rateDirection === 'up' ? '↑' : rateDirection === 'down' ? '↓' : '→'
+
+    document.title = `${spotlightSnapshot.code} ${latestRate.toFixed(2)} ${directionSymbol} | CurrencyHub`
+  }, [latestRate, rateDirection, spotlightSnapshot])
 
   return (
     <header className="sticky top-0 z-20 border-b border-white/60 bg-background/80 backdrop-blur-xl">
