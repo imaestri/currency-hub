@@ -1,5 +1,5 @@
 import type { CurrencyListItem, CurrencySnapshot } from '@/features/rates/types/rates'
-import { currencyMetadata, LISTED_CURRENCY_CODES } from '@/features/rates/lib/rates-constants'
+import { currencyMetadata } from '@/features/rates/lib/rates-constants'
 import {
   getCurrencySymbol,
   getStartDate,
@@ -93,15 +93,20 @@ export async function getCurrencySnapshot(code: string) {
 
 export async function getCurrenciesList(): Promise<CurrencyListItem[]> {
   const currenciesDictionary = await getCurrenciesDictionary()
-  const latestQuotes = await fetchFrankfurter<FrankfurterLatestResponse>(
-    `/latest?base=BRL&symbols=${LISTED_CURRENCY_CODES.join(',')}`,
-  )
+  const latestQuotes = await fetchFrankfurter<FrankfurterLatestResponse>('/latest?base=BRL')
 
-  return LISTED_CURRENCY_CODES.map((code) => ({
-    code,
-    name: currenciesDictionary[code] ?? code,
-    region: currencyMetadata[code]?.region ?? 'Global markets',
-    symbol: getCurrencySymbol(code, currencyMetadata[code]?.symbol),
-    latestRate: Number((1 / latestQuotes.rates[code]).toFixed(4)),
-  }))
+  return Object.entries(currenciesDictionary)
+    .map(([code, name]) => {
+      const latestRate =
+        code === 'BRL' ? 1 : latestQuotes.rates[code] ? Number((1 / latestQuotes.rates[code]).toFixed(4)) : 0
+
+      return {
+        code,
+        name,
+        region: currencyMetadata[code]?.region ?? 'Global markets',
+        symbol: getCurrencySymbol(code, currencyMetadata[code]?.symbol),
+        latestRate,
+      } satisfies CurrencyListItem
+    })
+    .sort((left, right) => left.code.localeCompare(right.code))
 }

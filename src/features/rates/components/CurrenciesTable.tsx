@@ -29,7 +29,7 @@ export function CurrenciesTable() {
       <CardHeader className="space-y-2">
         <CardTitle className="text-3xl">Currencies directory</CardTitle>
         <p className="text-sm text-muted-foreground">
-          Browse all available mock currencies and open a detail view for each one.
+          Browse every currency currently exposed by Frankfurter and open a detail view for each one.
         </p>
       </CardHeader>
       <CardContent>
