@@ -152,6 +152,58 @@ npm run test:watch
 - `src/test/mocks/handlers.ts`: handlers das rotas mockadas do Frankfurter
 - `src/test/render-with-providers.tsx`: helper para renderizar com Query Client e Router
 
+## CI/CD
+
+O projeto possui uma pipeline de CI/CD com GitHub Actions e publicacao no GitHub Pages.
+
+### O que o workflow faz
+
+O arquivo `.github/workflows/ci.yaml` executa tres etapas principais:
+
+- `quality`
+  - instala dependencias com `npm ci`
+  - roda `npm run lint`
+  - roda `npm run test`
+  - roda `npm run build`
+- `github-pages-build`
+  - roda apenas em `main` ou `master`
+  - gera o build de producao
+  - publica o artifact do `dist/` para o GitHub Pages
+- `github-pages-deploy`
+  - roda apenas em `main` ou `master`
+  - faz o deploy final com `actions/deploy-pages`
+
+### Estrategia por branch
+
+- `pull_request`
+  - executa validacao de qualidade
+- `develop`
+  - executa validacao de qualidade
+  - nao faz deploy
+- `main` e `master`
+  - executam validacao de qualidade
+  - executam build para Pages
+  - executam deploy no GitHub Pages
+
+### GitHub Pages
+
+Para o deploy funcionar no GitHub:
+
+1. abra `Settings > Pages`
+2. em `Build and deployment`, selecione `GitHub Actions`
+
+### Base path para Pages
+
+O `vite.config.ts` ajusta automaticamente o `base` quando o build roda dentro do GitHub Actions.
+
+Isso garante que o app funcione corretamente quando publicado em um caminho como:
+
+```text
+https://usuario.github.io/currency-hub/
+```
+
+Em ambiente local, o `base` continua `/`, sem impactar o `npm run dev`.
+
 ## Pontos tecnicos do projeto
 
 - Alias `@` apontando para `src/` para simplificar imports
