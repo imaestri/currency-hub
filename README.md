@@ -185,24 +185,6 @@ O arquivo `.github/workflows/ci.yaml` executa tres etapas principais:
   - executam build para Pages
   - executam deploy no GitHub Pages
 
-### GitHub Pages
-
-Para o deploy funcionar no GitHub:
-
-1. abra `Settings > Pages`
-2. em `Build and deployment`, selecione `GitHub Actions`
-
-### Base path para Pages
-
-O `vite.config.ts` ajusta automaticamente o `base` quando o build roda dentro do GitHub Actions.
-
-Isso garante que o app funcione corretamente quando publicado em um caminho como:
-
-```text
-https://usuario.github.io/currency-hub/
-```
-
-Em ambiente local, o `base` continua `/`, sem impactar o `npm run dev`.
 
 ## Pontos tecnicos do projeto
 
