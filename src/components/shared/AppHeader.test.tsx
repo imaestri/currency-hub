@@ -10,7 +10,7 @@ describe('AppHeader', () => {
       path: '*',
     })
 
-    expect(screen.queryByText(/Favorite spotlight/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/Pinned currency/i)).not.toBeInTheDocument()
 
     await waitFor(() => {
       expect(document.title).toBe('CurrencyHub')

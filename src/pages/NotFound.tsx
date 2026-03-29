@@ -14,10 +14,10 @@ export function NotFound() {
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
             404
           </p>
-          <h1 className="text-4xl leading-tight sm:text-5xl">This page does not exist</h1>
+          <h1 className="text-4xl leading-tight sm:text-5xl">We could not find this page</h1>
           <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">
-            The route you entered was not found. You can head back to the dashboard and continue
-            exploring currencies from there.
+            The address you entered does not match any page in CurrencyHub. Go back to the
+            dashboard and continue from there.
           </p>
         </div>
 
@@ -25,7 +25,7 @@ export function NotFound() {
           <Button asChild>
             <Link to="/">
               <Home className="mr-2 size-4" />
-              Return home
+              Go to dashboard
             </Link>
           </Button>
         </div>

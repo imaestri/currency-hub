@@ -43,7 +43,7 @@ export function AppHeader() {
           </div>
           <div>
             <p className="font-heading text-lg font-semibold">CurrencyHub</p>
-            <p className="text-sm text-muted-foreground">Feature-based exchange workspace</p>
+            <p className="text-sm text-muted-foreground">A simpler way to follow exchange rates</p>
           </div>
         </Link>
 
@@ -104,19 +104,19 @@ export function AppHeader() {
                         <Minus className="size-3.5" />
                       )}
                       {rateDirection === 'up'
-                        ? 'Up vs previous close'
+                        ? 'Higher than the previous close'
                         : rateDirection === 'down'
-                          ? 'Down vs previous close'
-                          : 'No change'}
+                          ? 'Lower than the previous close'
+                          : 'Same as the previous close'}
                     </div>
                   </div>
                 </div>
               </div>
             ) : (
               <div className="space-y-2">
-                <div className="font-medium text-foreground">Favorite spotlight</div>
+                <div className="font-medium text-foreground">Pinned currency</div>
                 <p className="text-xs text-muted-foreground">
-                  We could not load your highlighted currency right now.
+                  We could not load your pinned currency right now.
                 </p>
               </div>
             )}

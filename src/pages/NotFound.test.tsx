@@ -9,7 +9,7 @@ describe('NotFound', () => {
       path: '*',
     })
 
-    expect(screen.getByRole('heading', { name: /this page does not exist/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /return home/i })).toHaveAttribute('href', '/')
+    expect(screen.getByRole('heading', { name: /we could not find this page/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /go to dashboard/i })).toHaveAttribute('href', '/')
   })
 })

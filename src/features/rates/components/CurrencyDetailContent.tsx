@@ -43,10 +43,10 @@ export function CurrencyDetailContent({ code }: CurrencyDetailContentProps) {
               onClick={() => toggleFavorite(snapshot.code)}
             >
               <Star className={isFavorite ? 'mr-2 size-4 fill-accent text-accent' : 'mr-2 size-4'} />
-              {isFavorite ? 'Favorited' : 'Add to favorites'}
+              {isFavorite ? 'Saved to header' : 'Save to header'}
             </Button>
             <div className="rounded-2xl bg-secondary px-4 py-3 text-right">
-              <div className="text-sm text-muted-foreground">Latest BRL reference</div>
+              <div className="text-sm text-muted-foreground">Reference price in BRL</div>
               <div className="flex items-center gap-2 text-2xl font-semibold text-foreground">
                 <TrendingUp className="size-5 text-primary" />
                 {snapshot.symbol}

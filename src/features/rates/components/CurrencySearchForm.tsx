@@ -18,30 +18,30 @@ export function CurrencySearchForm() {
   return (
     <Card className="border-white/70 bg-white/80 shadow-soft backdrop-blur">
       <CardHeader>
-        <CardTitle className="text-xl">Track a currency</CardTitle>
+        <CardTitle className="text-xl">Find a currency by code</CardTitle>
       </CardHeader>
       <CardContent>
         <form className="flex flex-col gap-4 sm:flex-row" onSubmit={form.handleSubmit(onSubmit)}>
           <div className="flex-1 space-y-2">
             <Input
               aria-label="Currency code"
-              placeholder="Type USD, EUR, GBP..."
+              placeholder="Try USD, EUR, GBP..."
               autoComplete="off"
               className="h-12 bg-white"
               {...form.register('code', {
                 setValueAs: (value: string) => value.trim().toUpperCase(),
-                required: 'Use a 3-letter code.',
+                required: 'Enter a 3-letter currency code, like USD.',
                 minLength: {
                   value: 3,
-                  message: 'Use a 3-letter code.',
+                  message: 'Enter a 3-letter currency code, like USD.',
                 },
                 maxLength: {
                   value: 3,
-                  message: 'Use a 3-letter code.',
+                  message: 'Enter a 3-letter currency code, like USD.',
                 },
                 pattern: {
                   value: /^[A-Z]{3}$/,
-                  message: 'Only letters are allowed.',
+                  message: 'Use letters only, without numbers or symbols.',
                 },
               })}
             />
@@ -49,12 +49,12 @@ export function CurrencySearchForm() {
               <p className="text-sm text-destructive">{form.formState.errors.code.message}</p>
             ) : (
               <p className="text-sm text-muted-foreground">
-                Search with a three-letter currency code.
+                Use the 3-letter code of the currency you want to open.
               </p>
             )}
           </div>
           <Button type="submit" className="h-12 px-6">
-            Open dashboard
+            Open details
           </Button>
         </form>
       </CardContent>

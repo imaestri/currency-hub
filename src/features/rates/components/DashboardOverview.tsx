@@ -6,13 +6,13 @@ import { CurrencySearchForm } from '@/features/rates/components/CurrencySearchFo
 
 const highlights = [
   {
-    title: 'Feature-based structure',
-    description: 'Rates logic lives together in one domain folder with clear component, hook, service, and store boundaries.',
+    title: 'Everything in one place',
+    description: 'Browse supported currencies, compare them using BRL as the reference currency, and keep the ones you care about easy to revisit.',
     icon: Wallet,
   },
   {
-    title: 'Clear data flow',
-    description: 'Hooks fetch data, services talk to APIs, and components stay focused on rendering and interaction.',
+    title: 'Simple to explore',
+    description: 'Search by currency code, open the detail view, and understand recent movement without digging through a complex interface.',
     icon: BarChart3,
   },
 ]
@@ -23,28 +23,23 @@ export function DashboardOverview() {
       <section className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
         <div className="rounded-[2rem] border border-white/70 bg-white/70 p-8 shadow-soft backdrop-blur">
           <span className="inline-flex rounded-full bg-secondary px-3 py-1 text-sm font-medium text-secondary-foreground">
-            CurrencyHub starter
+            Currency overview
           </span>
           <div className="mt-6 max-w-2xl space-y-4">
             <h1 className="text-4xl leading-tight sm:text-5xl">
-              Build currency flows on top of a clean feature-based foundation.
+              Explore currencies with BRL as your reference, without getting lost in the interface.
             </h1>
             <p className="max-w-xl text-base text-muted-foreground sm:text-lg">
-              The project is organized by domain so rates-related logic stays together and the app
-              remains easy to scale.
+              Search by code, open the full currency directory, and keep your favorite currencies
+              visible in the header while you explore.
             </p>
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button asChild size="lg">
               <Link to="/currencies">
-                Explore all the currencies
+                Open currency directory
                 <ArrowRight className="ml-2 size-4" />
               </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <a href="https://ui.shadcn.com/" target="_blank" rel="noreferrer">
-                View shadcn/ui
-              </a>
             </Button>
           </div>
         </div>

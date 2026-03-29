@@ -20,7 +20,7 @@ describe('CurrencyDetailContent', () => {
 
     expect(await screen.findByText(/United States Dollar \(USD\)/i)).toBeInTheDocument()
     expect(screen.getByText(/North America/i)).toBeInTheDocument()
-    expect(screen.getByText(/Latest BRL reference/i)).toBeInTheDocument()
+    expect(screen.getByText(/Reference price in BRL/i)).toBeInTheDocument()
     expect(screen.getByText('Trend chart for USD')).toBeInTheDocument()
   })
 
@@ -33,9 +33,9 @@ describe('CurrencyDetailContent', () => {
       </Suspense>,
     )
 
-    const favoriteButton = await screen.findByRole('button', { name: /add to favorites/i })
+    const favoriteButton = await screen.findByRole('button', { name: /save to header/i })
     await user.click(favoriteButton)
 
-    expect(await screen.findByRole('button', { name: /favorited/i })).toBeInTheDocument()
+    expect(await screen.findByRole('button', { name: /saved to header/i })).toBeInTheDocument()
   })
 })

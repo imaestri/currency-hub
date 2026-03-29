@@ -27,22 +27,22 @@ export function CurrenciesTable() {
   return (
     <Card className="border-white/70 bg-white/80 shadow-soft backdrop-blur">
       <CardHeader className="space-y-2">
-        <CardTitle className="text-3xl">Currencies directory</CardTitle>
+        <CardTitle className="text-3xl">Supported currencies</CardTitle>
         <p className="text-sm text-muted-foreground">
-          Browse every currency currently exposed by Frankfurter and open a detail view for each one.
+          Browse the currencies available from Frankfurter and open any one to compare it using BRL as the reference.
         </p>
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-16">Fav</TableHead>
+              <TableHead className="w-16">Save</TableHead>
               <TableHead>Code</TableHead>
               <TableHead>Name</TableHead>
               <TableHead>Region</TableHead>
               <TableHead>Symbol</TableHead>
-              <TableHead className="text-right">Latest BRL</TableHead>
-              <TableHead className="text-right">Action</TableHead>
+              <TableHead className="text-right">Reference in BRL</TableHead>
+              <TableHead className="text-right">Details</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -92,7 +92,7 @@ export function CurrenciesTable() {
                 </TableCell>
                 <TableCell className="text-right">
                   <span className="inline-flex items-center gap-2 text-sm font-medium text-primary">
-                    Details
+                    Open
                     <ArrowRight className="size-4" />
                   </span>
                 </TableCell>
