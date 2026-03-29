@@ -18,21 +18,21 @@ describe('CurrencySearchForm', () => {
     })
 
     expect(screen.getByRole('textbox', { name: /currency code/i })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /open details/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /open dashboard/i })).toBeInTheDocument()
   })
 
   it('shows an error when the submitted code is invalid', async () => {
     const user = userEvent.setup()
 
-    // renderWithProviders(<CurrencySearchForm />, {
-    //   route: '/',
-    //   path: '/',
-    // })
+    renderWithProviders(<CurrencySearchForm />, {
+      route: '/',
+      path: '/',
+    })
 
     await user.type(screen.getByRole('textbox', { name: /currency code/i }), '12')
-    await user.click(screen.getByRole('button', { name: /open details/i }))
+    await user.click(screen.getByRole('button', { name: /open dashboard/i }))
 
-    expect(await screen.findByText(/enter a 3-letter currency code, like usd/i)).toBeInTheDocument()
+    expect(await screen.findByText(/use a 3-letter code/i)).toBeInTheDocument()
   })
 
   it('navigates to the currency detail route for a valid code', async () => {
@@ -45,7 +45,7 @@ describe('CurrencySearchForm', () => {
     })
 
     await user.type(screen.getByRole('textbox', { name: /currency code/i }), 'eur')
-    await user.click(screen.getByRole('button', { name: /open details/i }))
+    await user.click(screen.getByRole('button', { name: /open dashboard/i }))
 
     expect(await screen.findByText('/currencies/EUR')).toBeInTheDocument()
   })
