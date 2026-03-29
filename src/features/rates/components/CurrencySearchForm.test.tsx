@@ -18,7 +18,7 @@ describe('CurrencySearchForm', () => {
     })
 
     expect(screen.getByRole('textbox', { name: /currency code/i })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /open dashboard/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /open details/i })).toBeInTheDocument()
   })
 
   it('shows an error when the submitted code is invalid', async () => {
@@ -30,9 +30,9 @@ describe('CurrencySearchForm', () => {
     })
 
     await user.type(screen.getByRole('textbox', { name: /currency code/i }), '12')
-    await user.click(screen.getByRole('button', { name: /open dashboard/i }))
+    await user.click(screen.getByRole('button', { name: /open details/i }))
 
-    expect(await screen.findByText(/use a 3-letter code/i)).toBeInTheDocument()
+    expect(await screen.findByText(/enter a 3-letter currency code, like usd/i)).toBeInTheDocument()
   })
 
   it('navigates to the currency detail route for a valid code', async () => {
@@ -45,7 +45,7 @@ describe('CurrencySearchForm', () => {
     })
 
     await user.type(screen.getByRole('textbox', { name: /currency code/i }), 'eur')
-    await user.click(screen.getByRole('button', { name: /open dashboard/i }))
+    await user.click(screen.getByRole('button', { name: /open details/i }))
 
     expect(await screen.findByText('/currencies/EUR')).toBeInTheDocument()
   })
